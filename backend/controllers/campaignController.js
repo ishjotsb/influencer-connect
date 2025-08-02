@@ -1,4 +1,5 @@
 const Campaign = require('../models/Campaign');
+const Influencer = require('../models/Influencer');
 
 const createCampaign = async (req, res) => {
     try {
@@ -155,10 +156,70 @@ const deleteCampaign = async (req, res) => {
     }
 };
 
+const addInfluencerToCampaign = async (req, res) => {
+    try {
+        const { campaignId, influencerId } = req.body;
+        
+        if (!campaignId || !influencerId) {
+            return res.status(400).json({
+                success: false,
+                error: 'Both campaignId and influencerId are required in the request body'
+            });
+        }
+        
+        const campaign = await Campaign.findById(campaignId);
+        if (!campaign) {
+            return res.status(404).json({
+                success: false,
+                error: 'Campaign not found'
+            });
+        }
+        
+        const influencer = await Influencer.findById(influencerId);
+        if (!influencer) {
+            return res.status(404).json({
+                success: false,
+                error: 'Influencer not found'
+            });
+        }
+        
+        if (campaign.influencerIds.includes(influencerId)) {
+            return res.status(400).json({
+                success: false,
+                error: 'Influencer already added to this campaign'
+            });
+        }
+        
+        campaign.influencerIds.push(influencerId);
+        await campaign.save();
+        
+        const updatedCampaign = await Campaign.findById(campaignId).populate('influencerIds');
+        
+        res.status(200).json({
+            success: true,
+            data: updatedCampaign
+        });
+        
+    } catch (err) {
+        console.error(err);
+        if (err.kind === 'ObjectId') {
+            return res.status(400).json({
+                success: false,
+                error: 'Invalid ID format'
+            });
+        }
+        res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+};
+
 module.exports = {
     createCampaign,
     getCampaigns,
     getCampaign,
     updateCampaign,
-    deleteCampaign
+    deleteCampaign,
+    addInfluencerToCampaign
 };
