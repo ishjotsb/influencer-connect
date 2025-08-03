@@ -1,351 +1,333 @@
+"use client"
 import React from 'react';
-import { Star, Users, Target, Calendar, DollarSign, Plus, Sparkles, TrendingUp, Globe, Camera } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { Star, Users, Target, Calendar, DollarSign, Plus, Sparkles, TrendingUp, Globe, Camera, ArrowRight, Zap, Shield, BarChart3 } from 'lucide-react';
 
-export default function Dashboard() {
+export default function LandingPage() {
+  const router = useRouter();
+
+  const handleViewInfluencers = () => {
+    router.push('/influencers');
+  };
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-blue-50 to-indigo-50 relative overflow-hidden">
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
-        <div className="absolute bottom-20 left-40 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-rose-200 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-72 h-72 bg-lavender-200 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
+        <div className="absolute bottom-20 left-40 w-72 h-72 bg-sky-200 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-violet-200 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-1000"></div>
       </div>
 
       <div className="relative z-10 px-4 py-8">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-6 border border-white/20">
-            <Sparkles className="w-5 h-5 text-yellow-400" />
-            <span className="text-white/90 text-sm font-medium">Influencer Marketing Platform</span>
+        {/* Navigation */}
+        <nav className="flex justify-between items-center max-w-7xl mx-auto mb-16">
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-gradient-to-r from-rose-300 to-pink-300 rounded-xl flex items-center justify-center">
+              <Sparkles className="w-6 h-6 text-white" />
+            </div>
+            <span className="text-2xl font-bold text-slate-700">ViralConnect</span>
           </div>
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Create <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">Viral</span> Campaigns
+          <div className="flex items-center gap-4">
+            <button className="text-slate-600 hover:text-slate-800 transition-colors">Features</button>
+            <button className="text-slate-600 hover:text-slate-800 transition-colors">Pricing</button>
+            <button className="text-slate-600 hover:text-slate-800 transition-colors">About</button>
+            <button className="px-6 py-2 bg-gradient-to-r from-rose-300 to-pink-300 text-white rounded-full hover:from-rose-400 hover:to-pink-400 transition-all transform hover:scale-105">
+              Get Started
+            </button>
+          </div>
+        </nav>
+
+        {/* Hero Section */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-full px-6 py-2 mb-8 border border-rose-200">
+            <Sparkles className="w-5 h-5 text-amber-400" />
+            <span className="text-slate-700 text-sm font-medium">The Future of Influencer Marketing</span>
+          </div>
+          <h1 className="text-7xl md:text-8xl font-bold text-slate-800 mb-8 leading-tight">
+            Create <span className="bg-gradient-to-r from-rose-400 to-pink-400 bg-clip-text text-transparent">Viral</span><br />
+            Campaigns That<br />
+            <span className="bg-gradient-to-r from-sky-400 to-blue-400 bg-clip-text text-transparent">Convert</span>
           </h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
-            Connect brands with top influencers and track campaign performance in real-time
+          <p className="text-2xl text-slate-600 max-w-3xl mx-auto mb-12 leading-relaxed">
+            Connect brands with top-tier influencers, manage campaigns effortlessly, and track performance with AI-powered analytics
           </p>
-          <div className="flex justify-center gap-4 mb-12">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-              <div className="flex items-center gap-2 text-white">
-                <Users className="w-5 h-5 text-blue-400" />
-                <span className="font-semibold">2</span>
-                <span className="text-white/70">Influencers</span>
+          <div className="flex justify-center gap-6 mb-16">
+            <button 
+              onClick={handleViewInfluencers}
+              className="px-8 py-4 bg-gradient-to-r from-rose-300 to-pink-300 text-white text-lg font-bold rounded-2xl hover:from-rose-400 hover:to-pink-400 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center gap-2"
+            >
+              View Influencers
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <button className="px-8 py-4 bg-white/60 backdrop-blur-sm border border-slate-200 text-slate-700 text-lg font-bold rounded-2xl hover:bg-white/80 transition-all duration-300 flex items-center gap-2">
+              View Campaigns
+              <div className="w-3 h-3 bg-slate-400 rounded-full animate-pulse"></div>
+            </button>
+          </div>
+
+          {/* Stats */}
+          <div className="flex justify-center gap-8 flex-wrap">
+            <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-6 border border-sky-200 min-w-48">
+              <div className="flex items-center justify-center gap-3 text-slate-700 mb-2">
+                <Users className="w-8 h-8 text-sky-400" />
+                <span className="text-4xl font-bold">10K+</span>
               </div>
+              <p className="text-slate-500 text-lg">Active Influencers</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-              <div className="flex items-center gap-2 text-white">
-                <Target className="w-5 h-5 text-green-400" />
-                <span className="font-semibold">2</span>
-                <span className="text-white/70">Campaigns</span>
+            <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-6 border border-emerald-200 min-w-48">
+              <div className="flex items-center justify-center gap-3 text-slate-700 mb-2">
+                <Target className="w-8 h-8 text-emerald-400" />
+                <span className="text-4xl font-bold">5K+</span>
               </div>
+              <p className="text-slate-500 text-lg">Campaigns Launched</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-              <div className="flex items-center gap-2 text-white">
-                <TrendingUp className="w-5 h-5 text-pink-400" />
-                <span className="font-semibold">98%</span>
-                <span className="text-white/70">Success Rate</span>
+            <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-6 border border-rose-200 min-w-48">
+              <div className="flex items-center justify-center gap-3 text-slate-700 mb-2">
+                <TrendingUp className="w-8 h-8 text-rose-400" />
+                <span className="text-4xl font-bold">98%</span>
               </div>
+              <p className="text-slate-500 text-lg">Success Rate</p>
+            </div>
+            <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-6 border border-amber-200 min-w-48">
+              <div className="flex items-center justify-center gap-3 text-slate-700 mb-2">
+                <DollarSign className="w-8 h-8 text-amber-400" />
+                <span className="text-4xl font-bold">$100M+</span>
+              </div>
+              <p className="text-slate-500 text-lg">Revenue Generated</p>
             </div>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto space-y-8">
-          {/* Add Influencer Section */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-gradient-to-r from-pink-500 to-purple-500 rounded-2xl">
-                <Plus className="w-6 h-6 text-white" />
+        <div className="max-w-7xl mx-auto space-y-20">
+          {/* Features Section */}
+          <section className="text-center mb-20">
+            <h2 className="text-5xl font-bold text-slate-800 mb-6">
+              Everything You Need to <span className="bg-gradient-to-r from-rose-400 to-pink-400 bg-clip-text text-transparent">Dominate</span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-16">
+              Our platform combines cutting-edge technology with intuitive design to deliver unmatched results
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-white/60 backdrop-blur-lg rounded-3xl p-8 border border-rose-200 hover:bg-white/80 transition-all duration-300 transform hover:scale-105">
+                <div className="w-16 h-16 bg-gradient-to-r from-rose-300 to-pink-300 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                  <Zap className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-800 mb-4">AI-Powered Matching</h3>
+                <p className="text-slate-600 text-lg">Our advanced algorithm matches brands with perfect influencers based on audience demographics, engagement rates, and brand alignment.</p>
               </div>
-              <h2 className="text-3xl font-bold text-white">Add New Influencer</h2>
-            </div>
-            <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="space-y-2">
-                <label className="text-white/80 font-medium">Influencer Name</label>
-                <input
-                  type="text"
-                  className="w-full p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
-                  placeholder="Enter name..."
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-white/80 font-medium">Category</label>
-                <input
-                  type="text"
-                  className="w-full p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
-                  placeholder="Fashion, Lifestyle, Tech..."
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-white/80 font-medium">Instagram Handle</label>
-                <input
-                  type="text"
-                  className="w-full p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
-                  placeholder="@username"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-white/80 font-medium">Followers</label>
-                <input
-                  type="number"
-                  className="w-full p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
-                  placeholder="1000000"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-white/80 font-medium">Location</label>
-                <input
-                  type="text"
-                  className="w-full p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
-                  placeholder="New York, USA"
-                />
-              </div>
-              <div className="flex items-end">
-                <button
-                  type="submit"
-                  className="w-full py-4 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold rounded-2xl hover:from-pink-600 hover:to-purple-600 transform hover:scale-105 transition-all duration-300 shadow-lg"
-                >
-                  Add Influencer
-                </button>
-              </div>
-            </form>
-          </div>
 
-          {/* Create Campaign Section */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl">
-                <Target className="w-6 h-6 text-white" />
+              <div className="bg-white/60 backdrop-blur-lg rounded-3xl p-8 border border-sky-200 hover:bg-white/80 transition-all duration-300 transform hover:scale-105">
+                <div className="w-16 h-16 bg-gradient-to-r from-sky-300 to-blue-300 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                  <BarChart3 className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-800 mb-4">Real-Time Analytics</h3>
+                <p className="text-slate-600 text-lg">Track campaign performance with detailed analytics, engagement metrics, and ROI calculations in real-time dashboards.</p>
               </div>
-              <h2 className="text-3xl font-bold text-white">Create New Campaign</h2>
-            </div>
-            <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="space-y-2">
-                <label className="text-white/80 font-medium">Brand Name</label>
-                <input
-                  type="text"
-                  className="w-full p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="Nike, Apple, etc..."
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-white/80 font-medium">Campaign Objective</label>
-                <input
-                  type="text"
-                  className="w-full p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="Brand awareness, sales..."
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-white/80 font-medium">Budget ($)</label>
-                <input
-                  type="number"
-                  className="w-full p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="50000"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-white/80 font-medium">Start Date</label>
-                <input
-                  type="date"
-                  className="w-full p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-white/80 font-medium">End Date</label>
-                <input
-                  type="date"
-                  className="w-full p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                />
-              </div>
-              <div className="flex items-end">
-                <button
-                  type="submit"
-                  className="w-full py-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-bold rounded-2xl hover:from-blue-600 hover:to-indigo-600 transform hover:scale-105 transition-all duration-300 shadow-lg"
-                >
-                  Create Campaign
-                </button>
-              </div>
-            </form>
-          </div>
 
-          {/* Influencers Grid */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl">
-                <Users className="w-6 h-6 text-white" />
+              <div className="bg-white/60 backdrop-blur-lg rounded-3xl p-8 border border-emerald-200 hover:bg-white/80 transition-all duration-300 transform hover:scale-105">
+                <div className="w-16 h-16 bg-gradient-to-r from-emerald-300 to-green-300 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                  <Shield className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-800 mb-4">Secure Payments</h3>
+                <p className="text-slate-600 text-lg">Automated payment processing with escrow protection ensures secure transactions for both brands and influencers.</p>
               </div>
-              <h2 className="text-3xl font-bold text-white">Top Influencers</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Sample Influencer 1 */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+          </section>
+
+          {/* Top Influencers Showcase */}
+          <section className="bg-white/60 backdrop-blur-lg rounded-3xl p-12 border border-slate-200 shadow-lg">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-slate-800 mb-4">
+                Meet Our <span className="bg-gradient-to-r from-rose-400 to-pink-400 bg-clip-text text-transparent">Top Creators</span>
+              </h2>
+              <p className="text-xl text-slate-600">Connect with influencers who drive real results</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-rose-200 hover:bg-white/80 transition-all duration-300 transform hover:scale-105">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center">
-                    <Camera className="w-6 h-6 text-white" />
+                  <div className="w-16 h-16 bg-gradient-to-r from-rose-300 to-pink-300 rounded-full flex items-center justify-center">
+                    <Camera className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">John Doe</h3>
-                    <p className="text-white/70">@johndoe</p>
+                    <h3 className="text-xl font-bold text-slate-800">Sarah Chen</h3>
+                    <p className="text-slate-600">@sarahfashion</p>
                   </div>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <div className="flex items-center gap-2">
-                    <Star className="w-4 h-4 text-yellow-400" />
-                    <span className="text-white/80">Fashion</span>
+                    <Star className="w-4 h-4 text-amber-400" />
+                    <span className="text-slate-600">Fashion & Lifestyle</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-blue-400" />
-                    <span className="text-white/80">850,000 followers</span>
+                    <Users className="w-4 h-4 text-sky-400" />
+                    <span className="text-slate-600">2.1M followers</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Globe className="w-4 h-4 text-green-400" />
-                    <span className="text-white/80">New York</span>
+                    <TrendingUp className="w-4 h-4 text-emerald-400" />
+                    <span className="text-slate-600">8.5% engagement</span>
                   </div>
                 </div>
               </div>
 
-              {/* Sample Influencer 2 */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-sky-200 hover:bg-white/80 transition-all duration-300 transform hover:scale-105">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center">
-                    <Camera className="w-6 h-6 text-white" />
+                  <div className="w-16 h-16 bg-gradient-to-r from-sky-300 to-blue-300 rounded-full flex items-center justify-center">
+                    <Camera className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">Emma Smith</h3>
-                    <p className="text-white/70">@emmasmith</p>
+                    <h3 className="text-xl font-bold text-slate-800">Alex Rivera</h3>
+                    <p className="text-slate-600">@techwithalex</p>
                   </div>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <div className="flex items-center gap-2">
-                    <Star className="w-4 h-4 text-yellow-400" />
-                    <span className="text-white/80">Lifestyle</span>
+                    <Star className="w-4 h-4 text-amber-400" />
+                    <span className="text-slate-600">Tech & Gaming</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-blue-400" />
-                    <span className="text-white/80">1,200,000 followers</span>
+                    <Users className="w-4 h-4 text-sky-400" />
+                    <span className="text-slate-600">1.8M followers</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Globe className="w-4 h-4 text-green-400" />
-                    <span className="text-white/80">Los Angeles</span>
+                    <TrendingUp className="w-4 h-4 text-emerald-400" />
+                    <span className="text-slate-600">12.3% engagement</span>
                   </div>
                 </div>
               </div>
 
-              {/* Sample Influencer 3 */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-emerald-200 hover:bg-white/80 transition-all duration-300 transform hover:scale-105">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center">
-                    <Camera className="w-6 h-6 text-white" />
+                  <div className="w-16 h-16 bg-gradient-to-r from-emerald-300 to-green-300 rounded-full flex items-center justify-center">
+                    <Camera className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">James Brown</h3>
-                    <p className="text-white/70">@jamesbrown</p>
+                    <h3 className="text-xl font-bold text-slate-800">Maya Patel</h3>
+                    <p className="text-slate-600">@mayawellness</p>
                   </div>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <div className="flex items-center gap-2">
-                    <Star className="w-4 h-4 text-yellow-400" />
-                    <span className="text-white/80">Tech</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-blue-400" />
-                    <span className="text-white/80">680,000 followers</span>
+                    <Star className="w-4 h-4 text-amber-400" />
+                    <span className="text-slate-600">Health & Fitness</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Globe className="w-4 h-4 text-green-400" />
-                    <span className="text-white/80">San Francisco</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Campaigns Overview */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 shadow-2xl">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl">
-                <Target className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-3xl font-bold text-white">Active Campaigns</h2>
-            </div>
-            <div className="space-y-6">
-              {/* Sample Campaign 1 */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-white mb-2">Summer Collection</h3>
-                    <p className="text-white/70">Fashion Co.</p>
-                  </div>
-                  <div className="px-4 py-2 rounded-full text-sm font-medium bg-green-500/20 text-green-400 border border-green-500/30">
-                    Active
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-                  <div className="flex items-center gap-2">
-                    <Target className="w-4 h-4 text-blue-400" />
-                    <span className="text-white/80 text-sm">Promote summer fashion collection</span>
+                    <Users className="w-4 h-4 text-sky-400" />
+                    <span className="text-slate-600">950K followers</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <DollarSign className="w-4 h-4 text-green-400" />
-                    <span className="text-white/80 text-sm">$500,000</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-purple-400" />
-                    <span className="text-white/80 text-sm">2025-06-01</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-purple-400" />
-                    <span className="text-white/80 text-sm">2025-09-01</span>
-                  </div>
-                </div>
-                <div>
-                  <h4 className="text-white font-semibold mb-2">Assigned Influencers:</h4>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-pink-500/20 text-pink-400 rounded-full text-sm border border-pink-500/30">John Doe</span>
-                    <span className="px-3 py-1 bg-pink-500/20 text-pink-400 rounded-full text-sm border border-pink-500/30">Emma Smith</span>
+                    <TrendingUp className="w-4 h-4 text-emerald-400" />
+                    <span className="text-slate-600">15.7% engagement</span>
                   </div>
                 </div>
               </div>
 
-              {/* Sample Campaign 2 */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-4">
+              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-orange-200 hover:bg-white/80 transition-all duration-300 transform hover:scale-105">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-r from-orange-300 to-amber-300 rounded-full flex items-center justify-center">
+                    <Camera className="w-8 h-8 text-white" />
+                  </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white mb-2">Winter Collection</h3>
-                    <p className="text-white/70">Winterwear Inc.</p>
-                  </div>
-                  <div className="px-4 py-2 rounded-full text-sm font-medium bg-blue-500/20 text-blue-400 border border-blue-500/30">
-                    Upcoming
+                    <h3 className="text-xl font-bold text-slate-800">David Kim</h3>
+                    <p className="text-slate-600">@davidtravel</p>
                   </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                <div className="space-y-3">
                   <div className="flex items-center gap-2">
-                    <Target className="w-4 h-4 text-blue-400" />
-                    <span className="text-white/80 text-sm">Market winter clothing line</span>
+                    <Star className="w-4 h-4 text-amber-400" />
+                    <span className="text-slate-600">Travel & Adventure</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <DollarSign className="w-4 h-4 text-green-400" />
-                    <span className="text-white/80 text-sm">$300,000</span>
+                    <Users className="w-4 h-4 text-sky-400" />
+                    <span className="text-slate-600">1.3M followers</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-purple-400" />
-                    <span className="text-white/80 text-sm">2025-11-01</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-purple-400" />
-                    <span className="text-white/80 text-sm">2025-12-31</span>
-                  </div>
-                </div>
-                <div>
-                  <h4 className="text-white font-semibold mb-2">Assigned Influencers:</h4>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-pink-500/20 text-pink-400 rounded-full text-sm border border-pink-500/30">James Brown</span>
-                    <span className="px-3 py-1 bg-pink-500/20 text-pink-400 rounded-full text-sm border border-pink-500/30">Sophia Lee</span>
+                    <TrendingUp className="w-4 h-4 text-emerald-400" />
+                    <span className="text-slate-600">9.8% engagement</span>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </section>
+
+          {/* Success Stories */}
+          <section className="bg-white/60 backdrop-blur-lg rounded-3xl p-12 border border-slate-200 shadow-lg">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-slate-800 mb-4">
+                <span className="bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">Success</span> Stories
+              </h2>
+              <p className="text-xl text-slate-600">See how brands achieve incredible results with our platform</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-sky-200 hover:bg-white/80 transition-all duration-300">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-r from-sky-300 to-blue-300 rounded-xl flex items-center justify-center">
+                    <Target className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-800">TechStart Launch</h3>
+                    <p className="text-slate-600">Product Launch Campaign</p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-emerald-400">500%</div>
+                    <div className="text-slate-600">ROI Increase</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-sky-400">2.5M</div>
+                    <div className="text-slate-600">Reach</div>
+                  </div>
+                </div>
+                <p className="text-slate-600">&quot;ViralConnect helped us reach our target audience with precision. The campaign exceeded all expectations!&quot;</p>
+              </div>
+
+              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-rose-200 hover:bg-white/80 transition-all duration-300">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-r from-rose-300 to-pink-300 rounded-xl flex items-center justify-center">
+                    <Star className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-800">FashionForward</h3>
+                    <p className="text-slate-600">Brand Awareness Campaign</p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-emerald-400">300%</div>
+                    <div className="text-slate-600">Sales Growth</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-rose-400">1.8M</div>
+                    <div className="text-slate-600">Engagement</div>
+                  </div>
+                </div>
+                <p className="text-slate-600">&quot;The influencer matching was perfect. Our brand visibility skyrocketed and sales followed suit!&quot;</p>
+              </div>
+            </div>
+          </section>
+
+          {/* CTA Section */}
+          <section className="text-center bg-gradient-to-r from-rose-200/50 to-pink-200/50 backdrop-blur-lg rounded-3xl p-16 border border-rose-200">
+            <h2 className="text-5xl font-bold text-slate-800 mb-6">
+              Ready to Go <span className="bg-gradient-to-r from-rose-400 to-pink-400 bg-clip-text text-transparent">Viral?</span>
+            </h2>
+            <p className="text-2xl text-slate-600 max-w-3xl mx-auto mb-12">
+              Join thousands of brands and influencers who trust ViralConnect to create campaigns that convert
+            </p>
+            <div className="flex justify-center gap-6">
+              <button className="px-12 py-6 bg-gradient-to-r from-rose-300 to-pink-300 text-white text-xl font-bold rounded-2xl hover:from-rose-400 hover:to-pink-400 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center gap-3">
+                View Influencers
+                <ArrowRight className="w-6 h-6" />
+              </button>
+              <button className="px-12 py-6 bg-white/60 backdrop-blur-sm border border-slate-200 text-slate-700 text-xl font-bold rounded-2xl hover:bg-white/80 transition-all duration-300">
+                View Campaigns
+              </button>
+            </div>
+          </section>
         </div>
       </div>
     </div>

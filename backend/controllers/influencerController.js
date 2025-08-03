@@ -131,7 +131,7 @@ const deleteInfluencer = async (req, res) => {
             });
         }
         
-        await influencer.remove();
+        await influencer.deleteOne();
         
         res.status(200).json({
             success: true,
