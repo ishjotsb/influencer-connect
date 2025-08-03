@@ -21,6 +21,8 @@ export default function CampaignPage() {
     endDate: ''
   });
 
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   // Fetch campaigns from API
   useEffect(() => {
     fetchCampaigns();
@@ -29,7 +31,7 @@ export default function CampaignPage() {
   const fetchCampaigns = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:8000/api/campaigns');
+      const response = await fetch(`${apiUrl}/api/campaigns`);
       if (response.ok) {
         const data = await response.json();
         console.log(data);
@@ -82,7 +84,7 @@ export default function CampaignPage() {
         endDate: newCampaign.endDate ? new Date(newCampaign.endDate).toISOString() : new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
       };
 
-      const response = await fetch('http://localhost:8000/api/campaigns', {
+      const response = await fetch(`${apiUrl}/api/campaigns`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

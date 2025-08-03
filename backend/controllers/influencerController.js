@@ -76,10 +76,6 @@ const getInfluencer = async (req, res) => {
 };
 
 const updateInfluencer = async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
 
     try {
         const { name, category, instagram, followers, location } = req.body;

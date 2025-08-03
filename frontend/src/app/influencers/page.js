@@ -18,6 +18,9 @@ export default function InfluencersPage() {
     location: ''
   });
 
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  console.log(apiUrl)
+
   // Filter states
   const [filters, setFilters] = useState({
     category: '',
@@ -73,7 +76,7 @@ export default function InfluencersPage() {
     }
 
     try {
-      const response = await fetch(`http://localhost:8000/api/influencers/${id}`, {
+      const response = await fetch(`${apiUrl}/api/influencers/${id}`, {
         method: 'DELETE',
       });
 
@@ -124,7 +127,7 @@ export default function InfluencersPage() {
       let response;
       if (editingId) {
         // Update existing influencer
-        response = await fetch(`http://localhost:8000/api/influencers/${editingId}`, {
+        response = await fetch(`${apiUrl}/api/influencers/${editingId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -133,7 +136,7 @@ export default function InfluencersPage() {
         });
       } else {
         // Create new influencer
-        response = await fetch('http://localhost:8000/api/influencers', {
+        response = await fetch(`${apiUrl}/api/influencers`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -182,7 +185,7 @@ export default function InfluencersPage() {
   const fetchInfluencers = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:8000/api/influencers');
+      const response = await fetch(`${apiUrl}/api/influencers`);
       if (!response.ok) {
         throw new Error('Failed to fetch influencers');
       }

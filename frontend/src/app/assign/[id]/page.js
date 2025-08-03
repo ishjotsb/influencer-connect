@@ -6,6 +6,9 @@ import { ArrowLeft } from 'lucide-react';
 export default function AssignPage() {
     const router = useRouter();
     const params = useParams();
+
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     
     // Get campaign ID from URL params instead of manually parsing
     const id = params?.id || params?.campaignId; // Adjust based on your route structure
@@ -31,7 +34,7 @@ export default function AssignPage() {
 
     const fetchCampaignDetails = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/api/campaigns/${id}`);
+            const response = await fetch(`${apiUrl}/api/campaigns/${id}`);
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -52,7 +55,7 @@ export default function AssignPage() {
 
     const fetchInfluencers = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/influencers');
+            const response = await fetch(`${apiUrl}/api/influencers`);
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -87,7 +90,7 @@ export default function AssignPage() {
         setSuccessMessage('');
 
         try {
-            const response = await fetch('http://localhost:8000/api/campaigns/add-influencer', {
+            const response = await fetch(`${apiUrl}/api/campaigns/add-influencer`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
