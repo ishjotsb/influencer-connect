@@ -60,7 +60,7 @@ export default function LandingPage() {
               View Influencers
               <ArrowRight className="w-5 h-5" />
             </button>
-            <button className="px-8 py-4 bg-white/60 backdrop-blur-sm border border-slate-200 text-slate-700 text-lg font-bold rounded-2xl hover:bg-white/80 transition-all duration-300 flex items-center gap-2">
+            <button className="px-8 py-4 bg-white/60 backdrop-blur-sm border border-slate-200 text-slate-700 text-lg font-bold rounded-2xl hover:bg-white/80 transition-all duration-300 flex items-center gap-2" onClick={() => router.push('/campaign')}>
               View Campaigns
               <div className="w-3 h-3 bg-slate-400 rounded-full animate-pulse"></div>
             </button>
@@ -323,7 +323,7 @@ export default function LandingPage() {
                 View Influencers
                 <ArrowRight className="w-6 h-6" />
               </button>
-              <button className="px-12 py-6 bg-white/60 backdrop-blur-sm border border-slate-200 text-slate-700 text-xl font-bold rounded-2xl hover:bg-white/80 transition-all duration-300">
+              <button className="px-12 py-6 bg-white/60 backdrop-blur-sm border border-slate-200 text-slate-700 text-xl font-bold rounded-2xl hover:bg-white/80 transition-all duration-300" onClick={() => router.push('/campaign')}>
                 View Campaigns
               </button>
             </div>

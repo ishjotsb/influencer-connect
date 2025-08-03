@@ -31,8 +31,10 @@ const createCampaign = async (req, res) => {
 
 const getCampaigns = async (req, res) => {
     try {
-        const campaigns = await Campaign.find().sort({ startDate: -1 });
-        
+        const campaigns = await Campaign.find()
+            .sort({ startDate: -1 })
+            .populate('influencerIds');
+
         res.status(200).json({
             success: true,
             count: campaigns.length,

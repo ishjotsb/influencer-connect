@@ -1,8 +1,10 @@
 "use client"
 import React, { useState, useEffect, useCallback } from 'react';
-import { Star, Users, Globe, Camera, Plus, Sparkles, Instagram, Loader2, ArrowRight, Edit2, Trash2 } from 'lucide-react';
+import { ArrowLeft, Star, Users, Globe, Camera, Plus, Sparkles, Instagram, Loader2, ArrowRight, Edit2, Trash2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function InfluencersPage() {
+  const router = useRouter();
   const [influencers, setInfluencers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [adding, setAdding] = useState(false);
@@ -223,6 +225,10 @@ export default function InfluencersPage() {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-full px-6 py-2 mb-6 border border-rose-200" onClick={() => router.push('/')}>
+              <ArrowLeft className="w-5 h-5 text-amber-400" />
+              <span className="text-slate-700 text-sm font-medium">Back to dashboard</span>
+            </div>
             <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-full px-6 py-2 mb-6 border border-rose-200">
               <Sparkles className="w-5 h-5 text-amber-400" />
               <span className="text-slate-700 text-sm font-medium">Creator Network</span>
