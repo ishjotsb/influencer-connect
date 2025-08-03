@@ -20,7 +20,9 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-
+app.get("/", (req, res) => {
+    res.send("Hello World!");
+});
 app.use("/api/influencers", influencerRoute);
 app.use("/api/campaigns", campaignRoute);
 
