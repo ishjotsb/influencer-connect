@@ -33,5 +33,3 @@ Built using the **MERN Stack + Next.js**.
 - run the backend using npm start
 - run the frontend using npm run dev
 
-## 📁 Folder Structure (Simplified)
-
