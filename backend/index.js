@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
-const PORT = 3000;
+const PORT = 8000;
 
 const connectToDb = require("./config/dbConfig");
 const influencerRoute = require("./routes/influencerRoute");
